@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Saudi National Color Palette */
+    --saudi-green: 147 100% 21%;
+    --saudi-gold: 45 45% 63%;
+    --saudi-white: 0 0% 100%;
+    --saudi-dark: 220 20% 15%;
+    --saudi-light: 0 0% 97%;
+    --saudi-gray: 220 9% 46%;
+    --saudi-success: 142 76% 36%;
+    --saudi-warning: 38 92% 50%;
+    --saudi-danger: 0 84% 60%;
+    
+    /* shadcn/ui Theme Variables - Saudi Style */
+    --background: 0 0% 97%;
+    --foreground: 220 20% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 15%;
+    --primary: 147 100% 21%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 45 45% 63%;
+    --secondary-foreground: 220 20% 15%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+    --accent: 147 50% 95%;
+    --accent-foreground: 147 100% 21%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 147 100% 21%;
+    --radius: 0.5rem;
+    
+    /* Sidebar Variables */
+    --sidebar-background: 147 100% 21%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 45 45% 63%;
+    --sidebar-primary-foreground: 220 20% 15%;
+    --sidebar-accent: 147 80% 25%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 147 80% 18%;
+    --sidebar-ring: 45 45% 63%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Noto Kufi Arabic', sans-serif;
+    direction: rtl;
+    text-align: right;
+  }
+}
+
+@layer utilities {
+  /* Saudi Government Design Utilities */
+  .saudi-gradient {
+    background: linear-gradient(135deg, hsl(var(--saudi-green)) 0%, hsl(147 80% 15%) 100%);
+  }
+  
+  .saudi-gradient-gold {
+    background: linear-gradient(135deg, hsl(var(--saudi-gold)) 0%, hsl(45 60% 50%) 100%);
+  }
+  
+  .saudi-card {
+    @apply bg-white rounded-lg shadow-md border border-gray-100;
+  }
+  
+  .saudi-card-hover {
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+  
+  .saudi-button-primary {
+    @apply bg-[#006C35] text-white px-6 py-3 rounded-md font-medium 
+           transition-all duration-300 hover:bg-[#005a2d] hover:shadow-lg
+           focus:outline-none focus:ring-2 focus:ring-[#006C35] focus:ring-offset-2;
+  }
+  
+  .saudi-button-secondary {
+    @apply bg-[#CBB477] text-[#1a1a1a] px-6 py-3 rounded-md font-medium 
+           transition-all duration-300 hover:bg-[#b8a065] hover:shadow-lg;
+  }
+  
+  .saudi-button-outline {
+    @apply border-2 border-[#006C35] text-[#006C35] px-6 py-3 rounded-md font-medium 
+           transition-all duration-300 hover:bg-[#006C35] hover:text-white;
+  }
+  
+  .saudi-section-title {
+    @apply text-2xl md:text-3xl font-bold text-[#006C35] mb-2;
+  }
+  
+  .saudi-section-subtitle {
+    @apply text-gray-600 text-sm md:text-base;
+  }
+  
+  .saudi-badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium;
+  }
+  
+  .saudi-badge-green {
+    @apply saudi-badge bg-[#006C35]/10 text-[#006C35];
+  }
+  
+  .saudi-badge-gold {
+    @apply saudi-badge bg-[#CBB477]/20 text-[#8b6914];
+  }
+  
+  .saudi-input {
+    @apply w-full px-4 py-3 border border-gray-200 rounded-md 
+           focus:outline-none focus:ring-2 focus:ring-[#006C35] focus:border-transparent
+           transition-all duration-200;
+  }
+  
+  .saudi-textarea {
+    @apply w-full px-4 py-3 border border-gray-200 rounded-md 
+           focus:outline-none focus:ring-2 focus:ring-[#006C35] focus:border-transparent
+           transition-all duration-200 resize-none;
+  }
+  
+  /* Status Indicators */
+  .status-active {
+    @apply inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-100 text-green-700 text-sm;
+  }
+  
+  .status-active::before {
+    content: '';
+    @apply w-2 h-2 rounded-full bg-green-500 animate-pulse;
+  }
+  
+  .status-warning {
+    @apply inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 text-amber-700 text-sm;
+  }
+  
+  .status-warning::before {
+    content: '';
+    @apply w-2 h-2 rounded-full bg-amber-500;
+  }
+  
+  .status-danger {
+    @apply inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-100 text-red-700 text-sm;
+  }
+  
+  .status-danger::before {
+    content: '';
+    @apply w-2 h-2 rounded-full bg-red-500;
+  }
+  
+  /* RTL Specific Utilities */
+  .rtl-grid {
+    direction: rtl;
+  }
+  
+  .ltr-content {
+    direction: ltr;
+    text-align: left;
+  }
+  
+  /* Animation Utilities */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+  
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .animate-slide-in-right {
+    animation: slideInRight 0.4s ease-out forwards;
+  }
+  
+  /* Glass Effect */
+  .glass-effect {
+    @apply bg-white/80 backdrop-blur-md border border-white/20;
+  }
+  
+  /* Official Seal Pattern */
+  .seal-pattern {
+    background-image: radial-gradient(circle at 20% 80%, rgba(0, 108, 53, 0.05) 0%, transparent 50%),
+                      radial-gradient(circle at 80% 20%, rgba(203, 180, 119, 0.05) 0%, transparent 50%);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #006C35;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #005a2d;
+}
+
+/* Selection Color */
+::selection {
+  background: rgba(0, 108, 53, 0.2);
+  color: #006C35;
+}
